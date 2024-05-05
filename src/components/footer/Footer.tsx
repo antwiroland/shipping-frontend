@@ -6,6 +6,7 @@ import gl3 from "../../assets/img/gallery/gl3.jpg";
 import gl4 from "../../assets/img/gallery/gl4.jpg";
 import gl5 from "../../assets/img/gallery/gl5.jpg";
 import gl6 from "../../assets/img/gallery/gl6.jpg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -24,12 +25,12 @@ const Footer = () => {
               </span>
             </div>
             <div className="ft-newslatter-btn position-relative">
-              <a
+              <Link
                 className="d-flex align-items-center justify-content-center text-uppercase"
-                href="/login"
+                to="/login"
               >
                 Get a quote
-              </a>
+              </Link>
             </div>
           </div>
         </div>
