@@ -44,11 +44,11 @@ const ShippingPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-xl">
                   <div>
-                    Reciever's Name: <span>{shippment.recieverName}</span>
+                    Receiver's Name: <span>{shippment.recieverName}</span>
                   </div>
 
                   <div>
-                    Reciever's Address: <span>{shippment.address}</span>
+                    Receiver's Address: <span>{shippment.address}</span>
                   </div>
                 </CardTitle>
                 <Separator />
