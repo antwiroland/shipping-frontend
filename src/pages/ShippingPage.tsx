@@ -42,22 +42,31 @@ const ShippingPage = () => {
           {shippment ? (
             <Card className="bg-gray-50">
               <CardHeader>
-                <CardTitle className="flex items-center justify-between text-xl">
-                  <div>
-                    Receiver's Name: <span>{shippment.recieverName}</span>
-                  </div>
+                <CardTitle className="flex  items-center text-sm md:text-xl gap-3">
+                  <div className="flex-1 space-y-2">
+                    <div className="flex justify-between flex-col md:flex-row md:gap-6">
+                      <span>Receiver's Name: </span>
+                      <span className="flex flex-1 text-wrap">
+                        {shippment.recieverName}
+                      </span>
+                    </div>
 
-                  <div>
-                    Receiver's Address: <span>{shippment.address}</span>
+                    <div className="flex justify-between flex-col md:flex-row md:gap-6">
+                      <span>Receiver's Address: </span>
+
+                      <span className="flex flex-1 text-wrap">
+                        {shippment.address}
+                      </span>
+                    </div>
                   </div>
                 </CardTitle>
                 <Separator />
               </CardHeader>
               <CardContent className="flex flex-col gap-3 space-y-3">
                 <div className="flex gap-2">
-                  <span className="text-xl font-bold">Status:</span>
+                  <span className="text-sm md:text-xl font-bold">Status:</span>
                   <span
-                    className={`text-xl flont-bold ${
+                    className={`text-sm md:text-xl flont-bold text-green-500 ${
                       getShippmentStatus().value === "on-hold" && "text-red-500"
                     }`}
                   >
@@ -68,35 +77,46 @@ const ShippingPage = () => {
                 <OrderProgress value={getShippmentStatus().progressValue} />
 
                 <div className="flex gap-2">
-                  <span className="text-xl font-bold">From:</span>
-                  <span className="text-xl flont-bold">{shippment.from}</span>
+                  <span className="text-sm md:text-xl font-bold">From:</span>
+                  <span className="text-sm md:text-xl flont-bold">
+                    {shippment.from}
+                  </span>
                 </div>
 
                 <div className="flex gap-2">
-                  <span className="text-xl font-bold">Current Location:</span>
-                  <span className="text-xl flont-bold">
+                  <span className="text-sm md:text-xl font-bold">
+                    Current Location:
+                  </span>
+                  <span className="text-sm md:text-xl flont-bold">
                     {shippment.currentLocation}
                   </span>
                 </div>
 
                 <div className="flex gap-2">
-                  <span className="text-xl font-bold">Destination:</span>
-                  <span className="text-xl flont-bold">
+                  <span className="text-sm md:text-xl font-bold">
+                    Destination:
+                  </span>
+                  <span className="text-sm md:text-xl flont-bold">
                     {shippment.destination}
                   </span>
                 </div>
 
                 <div className="flex gap-2">
-                  <span className="text-xl font-bold">Payment Amount:</span>
-                  <span className="text-xl flont-bold">
+                  <span className="text-sm md:text-xl font-bold">
+                    Payment Amount:
+                  </span>
+
+                  <span className="text-sm md:text-xlflont-bold">
                     {shippment.paymentAmount}
                   </span>
                 </div>
 
                 <div className="flex gap-2">
-                  <span className="text-xl font-bold">Payment Status:</span>
+                  <span className="text-sm md:text-xl font-bold">
+                    Payment Status:
+                  </span>
                   <span
-                    className={`text-xl flont-bold ${
+                    className={`text-sm md:text-xl flont-bold ${
                       getShippmentPaymentStatus().value === "paid"
                         ? "text-green-500"
                         : "text-red-500"
@@ -107,19 +127,23 @@ const ShippingPage = () => {
                 </div>
 
                 <div className="flex gap-2">
-                  <span className="text-xl font-bold">Weigth:</span>
-                  <span className="text-xl flont-bold">{shippment.weight}</span>
+                  <span className="text-sm md:text-xl font-bold">Weigth:</span>
+                  <span className="text-sm md:text-xl flont-bold">
+                    {shippment.weight}
+                  </span>
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <span className="text-xl font-bold">Remarks</span>
+                  <span className="text-sm md:text-xl font-bold">Remarks</span>
                   <div className="shadow-md px-2 py-3">{shippment.remarks}</div>
                 </div>
               </CardContent>
             </Card>
           ) : (
             <div className="flex items-center justify-center">
-              <span className="text-xl">No package with given ID found !</span>
+              <span className="text-sm md:text-xl">
+                No package with given ID found !
+              </span>
             </div>
           )}
         </div>
