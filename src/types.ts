@@ -8,6 +8,8 @@ export type Shippment = {
   weight: string;
   trackingId: string;
   status: OrderStatus;
+  paymentAmount: number;
+  paymentStatus: PaymentStatus;
   remarks: string;
 };
 
@@ -28,8 +30,10 @@ export type OrderStatus =
   | "on-hold"
   | "delivered";
 
+export type PaymentStatus = "paid" | "pending-payment";
+
 export type User = {
   _id: string;
   email: string;
-  token:string
+  token: string;
 };

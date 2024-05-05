@@ -10,10 +10,14 @@ import {
 } from "../ui/select";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
-import { OrderStatus, Shippment } from "@/types";
+import { OrderStatus, PaymentStatus, Shippment } from "@/types";
 import LoadingButton from "../LoadingButton";
 import { ORDER_STATUS } from "@/config/order-status";
-import { useUpdateShippmentStatus } from "@/api/Shipment";
+import { PAYMENT_STATUS } from "@/config/payment-status";
+import {
+  useUpdateShippmentPaymentStatus,
+  useUpdateShippmentStatus,
+} from "@/api/Shipment";
 import { useEffect, useState } from "react";
 import EditShippmentForm from "./EditShippmentForm";
 
@@ -25,7 +29,14 @@ type Props = {
 function ShippmentCard({ shippment, remove, isLoading }: Props) {
   const { updateShippmentStatus, isLoading: isUpdateShippmentStatusLoading } =
     useUpdateShippmentStatus();
+  const {
+    updateShippmentPaymentStatus,
+    isLoading: isUpdateShippmentPaymentStatusLoading,
+  } = useUpdateShippmentPaymentStatus();
   const [status, setStatus] = useState<OrderStatus>(shippment.status);
+  const [payment, setPayment] = useState<PaymentStatus>(
+    shippment.paymentStatus
+  );
 
   useEffect(() => {
     setStatus(shippment.status);
@@ -37,6 +48,14 @@ function ShippmentCard({ shippment, remove, isLoading }: Props) {
       status: newStatus,
     });
     setStatus(newStatus);
+  };
+
+  const handlePaymentStatusChange = async (newPaymentStatus: PaymentStatus) => {
+    await updateShippmentPaymentStatus({
+      id: shippment._id,
+      paymentStatus: newPaymentStatus,
+    });
+    setPayment(newPaymentStatus);
   };
 
   return (
@@ -93,13 +112,43 @@ function ShippmentCard({ shippment, remove, isLoading }: Props) {
           <span className="text-md font-bold">{shippment.trackingId}</span>
         </div>
         <Separator />
+        <Label htmlFor="paymentStatus" className="text-md">
+          What is the is payment status
+        </Label>
+
+        <Select
+          value={payment}
+          disabled={
+            isUpdateShippmentStatusLoading ||
+            isUpdateShippmentPaymentStatusLoading
+          }
+          onValueChange={(value) =>
+            handlePaymentStatusChange(value as PaymentStatus)
+          }
+        >
+          <SelectTrigger id="paymentStatus">
+            <SelectValue placeholder="Payment Status" />
+          </SelectTrigger>
+          <SelectContent position="popper">
+            {PAYMENT_STATUS.map((paymentStatus) => (
+              <SelectItem key={paymentStatus.value} value={paymentStatus.value}>
+                {paymentStatus.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        <Separator />
         <Label htmlFor="status" className="text-md">
-          What is ths status of Shippment
+          What is the status of Shippment
         </Label>
 
         <Select
           value={status}
-          disabled={isUpdateShippmentStatusLoading}
+          disabled={
+            isUpdateShippmentStatusLoading ||
+            isUpdateShippmentPaymentStatusLoading
+          }
           onValueChange={(value) => handleStatusChange(value as OrderStatus)}
         >
           <SelectTrigger id="status">

@@ -305,3 +305,49 @@ export const useUserCreate = () => {
   }
   return { createUser, isLoading };
 };
+
+type UpdateShippmentPaymentStatusData = {
+  id: string;
+  paymentStatus: string;
+};
+
+export const useUpdateShippmentPaymentStatus = () => {
+  const queryClient = useQueryClient();
+  const accessToken = "";
+  const updateShippmentStatusRequest = async (
+    UpdateShippmentPaymentStatusDataRequest: UpdateShippmentPaymentStatusData
+  ) => {
+    const response = await fetch(
+      `${API_BASE_URL}/api/shippments/${UpdateShippmentPaymentStatusDataRequest.id}/payment-status`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          paymentStatus: UpdateShippmentPaymentStatusDataRequest.paymentStatus,
+        }),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error updating Shippment payment status");
+    }
+    return response.json();
+  };
+
+  const {
+    mutateAsync: updateShippmentPaymentStatus,
+    isLoading,
+    error,
+  } = useMutation(updateShippmentStatusRequest, {
+    onSuccess: () => {
+      toast.success("Shippment payment status updated successfully");
+      queryClient.invalidateQueries("shippments");
+    },
+  });
+  if (error) {
+    toast.error(error.toString());
+  }
+  return { updateShippmentPaymentStatus, isLoading };
+};

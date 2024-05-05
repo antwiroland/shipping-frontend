@@ -17,14 +17,23 @@ import { useEffect } from "react";
 import LoadingPage from "../LoadingPage";
 
 const formSchema = z.object({
-  recieverName: z.string().min(3, "Name must contain at least three characters"),
+  recieverName: z
+    .string()
+    .min(3, "Name must contain at least three characters"),
   from: z.string().min(3, "From must contain at least three character"),
-  currentLocation: z.string().min(3, "Current Location must contain at least three character"),
-  destination: z.string().min(3, "Destination must contain at least three character"),
+  currentLocation: z
+    .string()
+    .min(3, "Current Location must contain at least three character"),
+  destination: z
+    .string()
+    .min(3, "Destination must contain at least three character"),
   address: z.string().min(3, "Address must contain at least three character"),
+  paymentAmount: z.string().min(1, "Please provide payment amount"),
   weight: z.string().min(1, "Weight must contain at least one character"),
 
-  trackingId: z.string().min(3, "Tracking Id must contain at least three character"),
+  trackingId: z
+    .string()
+    .min(3, "Tracking Id must contain at least three character"),
   remarks: z.string().min(3, "Remarks must contain at least three character"),
 });
 
@@ -146,6 +155,20 @@ const EditShippmentForm = ({ shippmentId }: Props) => {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="paymentAmount"
+          render={({ field }) => (
+            <FormItem className="md:w-[20%]">
+              <Label>Weight</Label>
+              <FormControl>
+                <Input {...field} className="bg-white" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="weight"

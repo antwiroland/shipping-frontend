@@ -5,6 +5,7 @@ import OrderProgress from "@/components/shippment/OrderProgress";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ORDER_STATUS } from "@/config/order-status";
+import { PAYMENT_STATUS } from "@/config/payment-status";
 import { Link, useParams } from "react-router-dom";
 
 const ShippingPage = () => {
@@ -19,6 +20,13 @@ const ShippingPage = () => {
   const getShippmentStatus = () => {
     return (
       ORDER_STATUS.find((o) => o.value === shippment?.status) || ORDER_STATUS[0]
+    );
+  };
+
+  const getShippmentPaymentStatus = () => {
+    return (
+      PAYMENT_STATUS.find((o) => o.value === shippment?.paymentStatus) ||
+      PAYMENT_STATUS[0]
     );
   };
   return (
@@ -36,11 +44,11 @@ const ShippingPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-xl">
                   <div>
-                    Name: <span>{shippment.recieverName}</span>
+                    Reciever's Name: <span>{shippment.recieverName}</span>
                   </div>
 
                   <div>
-                    Address: <span>{shippment.address}</span>
+                    Reciever's Address: <span>{shippment.address}</span>
                   </div>
                 </CardTitle>
                 <Separator />
@@ -48,7 +56,11 @@ const ShippingPage = () => {
               <CardContent className="flex flex-col gap-3 space-y-3">
                 <div className="flex gap-2">
                   <span className="text-xl font-bold">Status:</span>
-                  <span className="text-xl flont-bold">
+                  <span
+                    className={`text-xl flont-bold ${
+                      getShippmentStatus().value === "on-hold" && "text-red-500"
+                    }`}
+                  >
                     {getShippmentStatus().label}
                   </span>
                 </div>
@@ -71,6 +83,26 @@ const ShippingPage = () => {
                   <span className="text-xl font-bold">Destination:</span>
                   <span className="text-xl flont-bold">
                     {shippment.destination}
+                  </span>
+                </div>
+
+                <div className="flex gap-2">
+                  <span className="text-xl font-bold">Payment Amount:</span>
+                  <span className="text-xl flont-bold">
+                    {shippment.paymentAmount}
+                  </span>
+                </div>
+
+                <div className="flex gap-2">
+                  <span className="text-xl font-bold">Payment Status:</span>
+                  <span
+                    className={`text-xl flont-bold ${
+                      getShippmentPaymentStatus().value === "paid"
+                        ? "text-green-500"
+                        : "text-red-500"
+                    }`}
+                  >
+                    {getShippmentPaymentStatus().label}
                   </span>
                 </div>
 

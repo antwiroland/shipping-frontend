@@ -35,6 +35,8 @@ export const formSchema = z.object({
     .string()
     .min(3, "Destination must contain at least three characters"),
   address: z.string().min(3, "Address must contain at least three characters"),
+
+  paymentAmount: z.string().min(1, "Please provide payment amount"),
   weight: z.string().min(1, "Weight must contain at least one characters"),
 
   trackingId: z
@@ -58,6 +60,7 @@ const ShippmentForm = () => {
       destination: "",
       address: "",
       weight: "",
+      paymentAmount: "",
       trackingId: "",
       status: "",
       remarks: "",
@@ -154,6 +157,20 @@ const ShippmentForm = () => {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="paymentAmount"
+          render={({ field }) => (
+            <FormItem className="md:w-[20%]">
+              <Label>Payment Amount</Label>
+              <FormControl>
+                <Input {...field} className="bg-white" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="weight"
