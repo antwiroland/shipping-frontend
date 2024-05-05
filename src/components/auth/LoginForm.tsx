@@ -47,7 +47,7 @@ const LoginForm = ({ onSave, isLoading, title }: Props) => {
             <FormItem>
               <Label>Email</Label>
               <FormControl>
-                <Input {...field} className="bg-white" />
+                <Input {...field} type="email" className="bg-white" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -61,7 +61,7 @@ const LoginForm = ({ onSave, isLoading, title }: Props) => {
             <FormItem>
               <Label>Password</Label>
               <FormControl>
-                <Input {...field} className="bg-white" />
+                <Input {...field} type="password" className="bg-white" />
               </FormControl>
               <FormMessage />
             </FormItem>
