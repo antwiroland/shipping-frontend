@@ -181,7 +181,7 @@ export const useUpdateShippmentStatus = () => {
       }
     );
     if (!response.ok) {
-      throw new Error("Error updating Shippment");
+      throw new Error("Error updating Shippment status");
     }
     return response.json();
   };
@@ -192,7 +192,7 @@ export const useUpdateShippmentStatus = () => {
     error,
   } = useMutation(updateShippmentStatusRequest, {
     onSuccess: () => {
-      toast.success("Shippment created successfully");
+      toast.success("Shippment status updated successfully");
       queryClient.invalidateQueries("shippments");
     },
   });
@@ -237,7 +237,7 @@ export const useUpdateShippment = () => {
     reset,
   } = useMutation(updateShippmentRequest, {
     onSuccess: () => {
-      toast.success("Shippment status updated successfully");
+      toast.success("Shippment updated successfully");
     },
   });
   if (error) {
@@ -252,6 +252,7 @@ type UserForm = {
   email: string;
   password: string;
 };
+
 export const useUserLogin = () => {
   const loginUserRequest = async (userData: UserForm): Promise<User> => {
     const response = await fetch(`${API_BASE_URL}/api/user/login`, {
