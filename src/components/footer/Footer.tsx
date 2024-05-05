@@ -1,5 +1,5 @@
 import Fbg3 from "../../assets/img/bg/f-bg3.jpg";
-import logo2 from "../../assets/img/logo/logo2.png"
+import logo2 from "../../assets/img/logo/logo2.png";
 import gl1 from "../../assets/img/gallery/gl1.jpg";
 import gl2 from "../../assets/img/gallery/gl2.jpg";
 import gl3 from "../../assets/img/gallery/gl3.jpg";
@@ -26,7 +26,7 @@ const Footer = () => {
             <div className="ft-newslatter-btn position-relative">
               <a
                 className="d-flex align-items-center justify-content-center text-uppercase"
-                href="contact.html"
+                href="/login"
               >
                 Get a quote
               </a>
@@ -43,10 +43,7 @@ const Footer = () => {
                   <div className="ft-footer-logo-widget headline pera-content">
                     <div className="ft-footer-logo">
                       <a href="#">
-                        <img
-                          src={logo2}
-                          alt="Footer Logo"
-                        />
+                        <img src={logo2} alt="Footer Logo" />
                       </a>
                     </div>
                     <p>
@@ -135,10 +132,7 @@ const Footer = () => {
                           href="assets/img/gallery/gl1.jpg"
                           data-source="assets/img/gallery/gl1.jpg"
                         >
-                          <img
-                            src={gl1}
-                            alt="Gallery Image 1"
-                          />
+                          <img src={gl1} alt="Gallery Image 1" />
                         </a>
                       </li>
                       <li>
@@ -146,10 +140,7 @@ const Footer = () => {
                           href="assets/img/gallery/gl2.jpg"
                           data-source="assets/img/gallery/gl2.jpg"
                         >
-                          <img
-                            src={gl2}
-                            alt="Gallery Image 2"
-                          />
+                          <img src={gl2} alt="Gallery Image 2" />
                         </a>
                       </li>
                       <li>
@@ -157,10 +148,7 @@ const Footer = () => {
                           href="assets/img/gallery/gl3.jpg"
                           data-source="assets/img/gallery/gl3.jpg"
                         >
-                          <img
-                            src={gl3}
-                            alt="Gallery Image 3"
-                          />
+                          <img src={gl3} alt="Gallery Image 3" />
                         </a>
                       </li>
                       <li>
@@ -168,10 +156,7 @@ const Footer = () => {
                           href="assets/img/gallery/gl4.jpg"
                           data-source="assets/img/gallery/gl4.jpg"
                         >
-                          <img
-                            src={gl4}
-                            alt="Gallery Image 4"
-                          />
+                          <img src={gl4} alt="Gallery Image 4" />
                         </a>
                       </li>
                       <li>
@@ -179,10 +164,7 @@ const Footer = () => {
                           href="assets/img/gallery/gl5.jpg"
                           data-source="assets/img/gallery/gl4.jpg"
                         >
-                          <img
-                            src={gl5}
-                            alt="Gallery Image 5"
-                          />
+                          <img src={gl5} alt="Gallery Image 5" />
                         </a>
                       </li>
                       <li>
@@ -190,10 +172,7 @@ const Footer = () => {
                           href="assets/img/gallery/gl6.jpg"
                           data-source="assets/img/gallery/gl4.jpg"
                         >
-                          <img
-                            src={gl6}
-                            alt="Gallery Image 6"
-                          />
+                          <img src={gl6} alt="Gallery Image 6" />
                         </a>
                       </li>
                     </ul>
@@ -202,9 +181,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="ft-footer-copyright text-center">
-              <span>
-                © 2021 Fastrans - Transport Services. All rights reserved.
-              </span>
+              <span>© USPX Cargo and Shipping.</span>
             </div>
           </div>
         </div>
