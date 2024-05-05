@@ -1,4 +1,3 @@
-import React from "react";
 import tstBg from "../../assets/img/testimonial/tst-bg.jpg";
 const TestimonialSection = () => {
   return (

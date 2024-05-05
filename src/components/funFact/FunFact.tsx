@@ -1,4 +1,3 @@
-import React from "react";
 import map from "../../assets/img/bg/map.png";
 
 const FunFactSection = () => {
