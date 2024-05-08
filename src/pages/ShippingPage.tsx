@@ -139,12 +139,14 @@ const ShippingPage = () => {
                 </div>
               </CardContent>
             </Card>
-          ) : (
+          ) : !shippment && !isShippmentLoading ? (
             <div className="flex items-center justify-center">
               <span className="text-sm md:text-xl">
                 No package with given ID found !
               </span>
             </div>
+          ) : (
+            <LoadingPage />
           )}
         </div>
       </div>
