@@ -12,7 +12,7 @@ const BlogSection = () => {
           <h2>Get the latest news, advice & best practice from blog.</h2>
         </div>
         <div className="ft-blog-content-3">
-          <div className="blog-slider-3">
+          <div className="blog-slider-3 flex flex-col md:flex-row gap-10 justify-between items-center">
             <div className="ft-item-innerbox">
               <div className="ft-blog-innerbox-3 position-relative">
                 <div className="ft-blog-img">
