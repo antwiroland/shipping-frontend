@@ -160,7 +160,7 @@ const EditShippmentForm = ({ shippmentId }: Props) => {
           name="paymentAmount"
           render={({ field }) => (
             <FormItem className="md:w-[20%]">
-              <Label>Weight</Label>
+              <Label>Payment Amount</Label>
               <FormControl>
                 <Input {...field} className="bg-white" />
               </FormControl>
